@@ -21,4 +21,11 @@ angular.module('starter', ['ionic', 'ngCordova'])
 
     $scope.name = "Leandro";
 
+    $scope.list = [];
+
+    for (var i = 0; i < 10; i++) {
+        $scope.list.push({ "code": i, "name": "name" + i });
+    }
+
+
 });
