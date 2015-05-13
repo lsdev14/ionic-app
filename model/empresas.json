@@ -1,0 +1,108 @@
+﻿[
+    {
+        "codigo": 1,
+        "nome": "Empresa S/A",
+        "telefone": "9999",
+        "email": "contato@empresa.com.br",
+        "endereco": "Rua da empresa, nº 4566",
+        "funcionarios": [
+            {
+                "codigo": 1,
+                "nome": "Leandro"
+            },
+            {
+                "codigo": 2,
+                "nome": "Daniel"
+            }
+        ],
+        "calendario": [
+            {
+                "data": "2015-03-29T00:00:00-03:00",
+                "concluida": true,
+                "listaPresenca": [
+                    {
+                        "funcionarioCodigo": 1,
+                        "funcionarioNome": "Leandro",
+                        "status": "Presente"
+                    },
+                    {
+                        "funcionarioCodigo": 2,
+                        "funcionarioNome": "Daniel",
+                        "status": "Ferias"
+                    }
+                ]
+
+            },
+            {
+                "data": "2015-03-31T00:00:00-03:00",
+                "concluida":  true,
+                "listaPresenca": [
+                    {
+                        "funcionarioCodigo": 1,
+                        "funcionarioNome" :  "Leandro",
+                        "status": "Presente"
+                    },
+                    {
+                        "funcionarioCodigo": 2,
+                        "funcionarioNome" :  "Daniel",
+                        "status": "Presente"
+                    }
+                ]
+
+            }
+        ]
+    },
+    {
+        "codigo": 2,
+        "nome": "Empresa 2 S/A",
+        "telefone": "88888",
+        "email": "contato@empresa2.com.br",
+        "endereco": "Rua da empresa2, nº 4566",
+        "funcionarios": [
+            {
+                "codigo": 1,
+                "nome": "Leandro"
+            },
+            {
+                "codigo": 2,
+                "nome": "Daniel"
+            }
+        ],
+        "calendario": [
+            {
+                "data": "2015-03-29T00:00:00-03:00",
+                "concluida":  true,
+                "listaPresenca": [
+                    {
+                        "funcionarioCodigo": 1,
+                        "funcionarioNome" :  "Leandro",
+                        "status": "Presente"
+                    },
+                    {
+                        "funcionarioCodigo": 2,
+                        "funcionarioNome" :  "Daniel",
+                        "status": "Ferias"
+                    }
+                ]
+
+            },
+            {
+                "data": "2015-03-31T00:00:00-03:00",
+                "concluida":  false,
+                "listaPresenca": [
+                    {
+                        "funcionarioCodigo": 1,
+                        "funcionarioNome" :  "Leandro",
+                        "status": "Presente"
+                    },
+                    {
+                        "funcionarioCodigo": 2,
+                        "funcionarioNome" :  "Daniel",
+                        "status": "Presente"
+                    }
+                ]
+
+            }
+        ]
+    }
+]

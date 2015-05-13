@@ -1,0 +1,11 @@
+﻿#update ionic
+npm install -g ionic
+
+#update ionic files to website for tests
+#https://apps.ionic.io/
+ionic upload
+ionic share email
+
+#update ionic files inside the project
+bower install
+

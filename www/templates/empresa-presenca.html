@@ -1,0 +1,47 @@
+﻿<ion-view view-title="Lista de Presença">
+
+
+    <ion-nav-buttons side="right">
+        <button class="button button-positive" data-ng-click="salvar()">Salvar</button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding">
+
+        <label class="item item-input">
+            <span class="input-label">{{empresa.nome}} </span>
+            <span style="position: absolute; top: 12px; right: 16px;">{{(data | date:"dd-MM-yyyy")}}</span>
+        </label>
+
+        <!--<div class="item item-input">
+            </div>-->
+
+
+        <ion-list>
+
+            <ion-item data-ng-repeat="funcionario in evento.listaPresenca | orderBy:'funcionarioNome' track by funcionario.funcionarioNome" class="item-button-right">
+
+
+                <span>{{funcionario.funcionarioNome}}</span>
+
+                <a class="button" data-ng-class="{'button-positive' : funcionario.status == 'Presente'}" style="right:165px !important;" data-ng-click="status(funcionario, 'Presente')">
+                    <i class="icon ion-checkmark"></i>
+                </a>
+
+                <a class="button" data-ng-class="{'button-assertive' : funcionario.status == 'Faltou'}" style="right:115px !important;" data-ng-click="status(funcionario, 'Faltou')">
+                    <i class="icon ion-checkmark"></i>
+                </a>
+
+                <a class="button" data-ng-class="{'button-royal' : funcionario.status == 'Justificado'}" style="right:65px !important;" data-ng-click="status(funcionario, 'Justificado')">
+                    <i class="icon ion-checkmark"></i>
+                </a> 
+
+                <a class="button" data-ng-class="{'button-energized' : funcionario.status == 'Ferias'}" data-ng-click="status(funcionario, 'Ferias')">
+                    <i class="icon ion-checkmark"></i>
+                </a> 
+
+
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+</ion-view>

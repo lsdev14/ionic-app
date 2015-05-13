@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.ionicframework.ionicapp118872" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>ionic-app</name>
+<widget id="com.ionicframework.controlepresenca239878" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>ControlePresenca</name>
   <description>
         An Ionic Framework and Cordova project.
     </description>
@@ -16,4 +16,5 @@
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
+  <gap:plugin name="de.appplant.cordova.plugin.email-composer" version="0.8.2" />
 </widget>
