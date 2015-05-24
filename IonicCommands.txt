@@ -9,3 +9,6 @@ ionic share email
 #update ionic files inside the project
 bower install
 
+#install apk to android device
+adb install ControlePresenca-debug.apk
+

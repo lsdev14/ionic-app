@@ -1,7 +1,7 @@
 ﻿angular.module('controlePresenca.controllers')
 
-.controller('EmpresaPresencaCtrl',['$scope','$stateParams','$state','$ionicPopup','Empresas','Util',function (
-    $scope,$stateParams,$state,$ionicPopup,empresas,util) {
+.controller('EmpresaPresencaCtrl',['$scope','$stateParams','$state','$ionicPopup','Empresas','Util','$ionicHistory',function (
+    $scope,$stateParams,$state,$ionicPopup,empresas,util,$ionicHistory) {
 
     console.log('empresa presenca: ' + $stateParams.empresaCodigo + ' - ' + $stateParams.data );
     $scope.empresa = empresas.get($stateParams.empresaCodigo);
@@ -11,8 +11,11 @@
 
 
     $scope.salvar = function () {
+        $scope.evento.concluida = true;
         empresas.set($scope.empresa);
-        $state.go('tab.empresas');
+        //$state.go('tab.empresa-calendario');
+        $ionicHistory.goBack();
+
         //$state.go($state.current,{},{ reload: true });
 
         //$window.location.reload(true);
@@ -22,8 +25,17 @@
     $scope.status = function (functionario,status) {
 
         functionario.status = status;
-        $scope.evento.concluida = true;
+    }
 
+    $scope.test = function () {
+
+        var helpPopup = $ionicPopup.alert({
+            title: 'Ajuda',
+            template: '<img src="./img/presenca-help.jpg" style="padding-left: 13px;"/>'
+        });
+        helpPopup.then(function (res) {
+            console.log(res);
+        });
     }
 
 }]);

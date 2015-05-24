@@ -16,7 +16,7 @@ angular.module('controlePresenca',[
     'controlePresenca.services',
     'controlePresenca.directives',
     'xeditable',
-    'ngCordova'
+    'firebase'
 ])
 .run(function($ionicPlatform,$rootScope, $ionicHistory, editableOptions) {
   $ionicPlatform.ready(function() {
@@ -31,10 +31,10 @@ angular.module('controlePresenca',[
     }
   });
 
-  $ionicHistory.nextViewOptions({
-      disableAnimate: true,
-      disableBack: true
-  });
+  //$ionicHistory.nextViewOptions({
+  //    disableAnimate: true,
+  //    disableBack: true
+  //});
 
   $rootScope.$on('$stateChangeStart',function (event,toState,toParams,fromState,fromParams) {
       $ionicHistory.clearCache();

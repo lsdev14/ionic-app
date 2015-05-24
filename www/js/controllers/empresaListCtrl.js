@@ -1,18 +1,15 @@
 ﻿angular.module('controlePresenca.controllers')
 
-.controller('EmpresaListCtrl',['$scope','$ionicPopup','$http','$cordovaEmailComposer', '$ionicPlatform', 'Empresas',
-    function ($scope,$ionicPopup,$http, $cordovaEmailComposer, $ionicPlatform, empresas) {
+.controller('EmpresaListCtrl',['$scope','$ionicPopup','$http','Empresas','$firebaseStorage',function (
+    $scope,
+    $ionicPopup,
+    $http,
+    empresas,    
+    $firebaseStorage) {
 
-        //$ionicPlatform.ready(function () {
-
-        //    $cordovaEmailComposer.isAvailable().then(function () {
-        //        alert('isAvailable');
-        //    },function () {
-        //        alert('not available');
-        //    });
-        //});
-
-    $scope.empresas = empresas.all();
+    $scope.empresas = empresas.all();  
+    
+    
     //if ($scope.empresas.length == 0) {
     //    //quando vazio adiciona empresa teste        
     //    var empresa =
@@ -96,120 +93,57 @@
                 console.log('Remover cancelado');
             }
         });
-
-
     }
 
-
-    $scope.shouldShowOption = true;
-    $scope.edit = function (empresa) {
-        console.log(empresa);
-    };
-    
-    $scope.relatModal = function () {
-
-        try {
-
-            $cordovaEmailComposer.isAvailable().then(function () {
-                alert('isAvailable');
-            },function () {
-                alert('not available');
-            });
-
-
-            cordova.plugins.email.open({
-                to: 'teste@teste.com',
-                cc: 'teste@teste.com',
-                bcc: ['teste@teste.com','teste@teste.com'],
-                subject: 'Assunto de teste',
-                body: 'Teste email no device'
-            });
-        }
-        catch (e) {    
-
-            var alertPopup = $ionicPopup.alert({
-                title: 'Aviso',
-                template: e
-            });
-            alertPopup.then(function (res) {
-                console.log(msg);
-            });
-
-        }
-
-        return;
+    $scope.backupData = function () {
 
         var confirmPopup = $ionicPopup.confirm({
-            title: 'Relatório de presença',
-            template: 'De: <label class="item item-input"><input type="date" placeholder="Data" autofocus></label> Até: <label class="item item-input"><input type="date" placeholder="Data" autofocus></label>'
+            title: 'Aviso',
+            template: 'Deseja fazer uma copia de segurança?'
         });
         confirmPopup.then(function (res) {
             if (res) {
-                var data = {
-                    "codigo": 1,
-                    "nome": "Empresa S/A",
-                    "telefone": "9999",
-                    "email": "contato@empresa.com.br",
-                    "endereco": "Rua da empresa, nº 4566",
-                    "funcionarios": [
-                        {
-                            "codigo": 1,
-                            "nome": "Leandro"
-                        },
-                        {
-                            "codigo": 2,
-                            "nome": "Daniel"
-                        }
-                    ],
-                    "calendario": [
-                        {
-                            "data": "2015-03-29 10:30:00",
-                            "listaPresenca": [
-                                {
-                                    "funcionarioCodigo": 1,
-                                    "status": "Presente"
-                                },
-                                {
-                                    "funcionarioCodigo": 2,
-                                    "status": "Ferias"
-                                }
-                            ]
+                console.log('Salvando json no Firebase');
 
-                        },
-                        {
-                            "data": "2015-03-31 10:30:00",
-                            "listaPresenca": [
-                                {
-                                    "funcionarioCodigo": 1,
-                                    "status": "Presente"
-                                },
-                                {
-                                    "funcionarioCodigo": 2,
-                                    "status": "Presente"
-                                }
-                            ]
+                var backup = {
+                    backupDate: moment(new Date()).format('YYYY-MM-DDThh:mm:ss'),
+                    data: $scope.empresas
+                }
+                $firebaseStorage.set(backup);
 
-                        }
-                    ]
-                };
+            } else {
+                console.log('Copia de segurança cancelada');
+            }
+        });
+    }
+    
+    $scope.relatModal = function (empresa) {
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Relatório de presença',
+            template: 'De: <label class="item item-input"><input type="date" placeholder="Data"></label> Até: <label class="item item-input"><input type="date" placeholder="Data"></label>'
+        });
+        confirmPopup.then(function (res) {
+            if (res) {
+                
+                console.log(JSON.stringify(empresa));
                 $http.post(
-                    'http://apirelatorio.ssvsistemas.com.br/api/relatoriopresenca',
-                    JSON.stringify(data),
+                    'http://apirelatorio.ssvsistemas.com.br/api/relatoriopresenca/post',
+                    JSON.stringify(empresa),
                     {
                         headers: {
                             'Content-Type': 'application/json'
                         }
                     }
                 ).success(function (data) {
-                    $scope.person = data;
+                    
+                    //console.log(data);
                     console.log(data);
 
                     cordova.plugins.email.open({
-                        to: 'teste@teste.com',
-                        cc: 'teste@teste.com',
-                        bcc: ['teste@teste.com','teste@teste.com'],
-                        subject: 'Assunto de teste',
-                        body: 'Teste email no device'
+                        to: empresa.email,
+                        subject: 'Relatório de presença - De: Até:',
+                        body: 'Em anexo segue arquivo com a lista de presença',
+                        attachments:"base64:pdf//" + data
                     });
                 });
             }
