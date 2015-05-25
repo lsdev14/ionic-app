@@ -8,68 +8,6 @@
     $firebaseStorage) {
 
     $scope.empresas = empresas.all();  
-    
-    
-    //if ($scope.empresas.length == 0) {
-    //    //quando vazio adiciona empresa teste        
-    //    var empresa =
-    //        {
-    //            "codigo": 1,
-    //            "nome": "Empresa S/A",
-    //            "telefone": "9999",
-    //            "email": "contato@empresa.com.br",
-    //            "endereco": "Rua da empresa, nº 4566",
-    //            "funcionarios": [
-    //                {
-    //                    "codigo": 1,
-    //                    "nome": "Leandro"
-    //                },
-    //                {
-    //                    "codigo": 2,
-    //                    "nome": "Daniel"
-    //                }
-    //            ],
-    //            "calendario": [
-    //                {
-    //                    "data": "2015-03-29 10:30:00",
-    //                    "listaPresenca": [
-    //                        {
-    //                            "funcionarioCodigo": 1,
-    //                            "status": "Presente"
-    //                        },
-    //                        {
-    //                            "funcionarioCodigo": 2,
-    //                            "status": "Ferias"
-    //                        }
-    //                    ]
-
-    //                },
-    //                {
-    //                    "data": "2015-03-31 10:30:00",
-    //                    "listaPresenca": [
-    //                        {
-    //                            "funcionarioCodigo": 1,
-    //                            "status": "Presente"
-    //                        },
-    //                        {
-    //                            "funcionarioCodigo": 2,
-    //                            "status": "Presente"
-    //                        }
-    //                    ]
-
-    //                }
-    //            ]
-    //        };
-
-    //    for (var i = 1;i <= 2;i++) {
-
-    //        empresa.codigo = i;
-    //        empresa.nome = "Empresa " + i + " S/A";
-
-    //        empresas.set(empresa);
-    //        $scope.empresas.push(angular.copy(empresa));
-    //    }
-    //}
 
     $scope.clearEmpresa = function () {
 
@@ -143,7 +81,7 @@
                         to: empresa.email,
                         subject: 'Relatório de presença - De: Até:',
                         body: 'Em anexo segue arquivo com a lista de presença',
-                        attachments:"base64:pdf//" + data
+                        attachments:"base64:relatorio.pdf//" + data
                     });
                 });
             }
