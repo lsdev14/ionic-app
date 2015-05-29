@@ -148,7 +148,7 @@
 
                         //$scope.content = $sce.trustAsResourceUrl(fileURL);
 
-                        window.open(url);
+                        //window.open(url);
 
 
                         //cordova.plugins.email.open({
