@@ -19,5 +19,12 @@ xmlns:gap= "http://phonegap.com/ns/1.0">
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
+    <feature name="InAppBrowser">
+    <param name="android-package" value="org.apache.cordova.InAppBrowser"/>
+  </feature>
+  <feature name="InAppBrowser">
+    <param name="ios-package" value="CDVInAppBrowser" />
+  </feature>
+  <gap:plugin name="org.apache.cordova.inappbrowser"  />
   <gap:plugin name="de.appplant.cordova.plugin.email-composer" version="0.8.2" />
 </widget>
