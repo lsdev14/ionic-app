@@ -62,11 +62,6 @@
             title: 'Relatório de presença',
             template: 'De: <label class="item item-input"><input type="date" placeholder="Data"></label> Até: <label class="item item-input"><input type="date" placeholder="Data"></label>'
         });
-$scope.relatModal = function (empresa) {
-        var confirmPopup = $ionicPopup.confirm({
-            title: 'Relatório de presença',
-            template: 'De: <label class="item item-input"><input type="date" placeholder="Data"></label> Até: <label class="item item-input"><input type="date" placeholder="Data"></label>'
-        });
         confirmPopup.then(function (res) {
             if (res) {
                 
