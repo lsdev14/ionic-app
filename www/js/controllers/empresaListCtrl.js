@@ -123,7 +123,7 @@ $scope.relatModal = function (empresa) {
                         console.log(res);
                     });
 
-                    var url = null;
+                    var url;
 
 
                     try {
@@ -140,7 +140,7 @@ $scope.relatModal = function (empresa) {
                             url = window.URL.createObjectURL(blob);
                         }
 
-                        var helpPopup = $ionicPopup.alert({
+                        helpPopup = $ionicPopup.alert({
                             title: 'Ajuda',
                             template: url
                         });
