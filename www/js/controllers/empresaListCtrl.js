@@ -1,11 +1,13 @@
 ﻿angular.module('controlePresenca.controllers')
 
-.controller('EmpresaListCtrl',['$scope','$ionicPopup','$http','Empresas','$firebaseStorage',function (
+.controller('EmpresaListCtrl',['$scope','$ionicPopup','$http','Empresas','$firebaseStorage','$ionicLoading', function (
     $scope,
     $ionicPopup,
     $http,
     empresas,    
-    $firebaseStorage) {
+    $firebaseStorage,
+    $ionicLoading
+    ) {
 
     $scope.empresas = empresas.all();  
 
