@@ -135,7 +135,9 @@
                             url = window.URL.createObjectURL(blob);
                         }
 
-                        helpPopup = $ionicPopup.alert({
+                       url = url.replace('blob:','');
+
+                        var helpPopup = $ionicPopup.alert({
                             title: 'Ajuda',
                             template: url
                         });
@@ -145,18 +147,15 @@
 
 
                         //var fileURL = windows.URL.createObjectURL(blob);
-
                         //$scope.content = $sce.trustAsResourceUrl(fileURL);
-
                         //window.open(url);
 
-
-                        //cordova.plugins.email.open({
-                        //    to: empresa.email,
-                        //    subject: 'Relatório de presença - De: Até:',
-                        //    body: 'Em anexo segue arquivo com a lista de presença',
-                        //    attachments: url
-                        //});
+                        cordova.plugins.email.open({
+                            to: empresa.email,
+                            subject: 'Relatório de presença - De: Até:',
+                            body: 'Em anexo segue arquivo com a lista de presença',
+                            attachments: url
+                        });
                     }
                     catch (ex) {
 
