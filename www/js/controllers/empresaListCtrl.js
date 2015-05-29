@@ -62,6 +62,11 @@
             title: 'Relatório de presença',
             template: 'De: <label class="item item-input"><input type="date" placeholder="Data"></label> Até: <label class="item item-input"><input type="date" placeholder="Data"></label>'
         });
+$scope.relatModal = function (empresa) {
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Relatório de presença',
+            template: 'De: <label class="item item-input"><input type="date" placeholder="Data"></label> Até: <label class="item item-input"><input type="date" placeholder="Data"></label>'
+        });
         confirmPopup.then(function (res) {
             if (res) {
                 
@@ -110,6 +115,16 @@
                         }
                     }
 
+                    var helpPopup = $ionicPopup.alert({
+                            title: 'Ajuda',
+                            template: type
+                        });
+                    helpPopup.then(function (res) {
+                        console.log(res);
+                    });
+
+                    var url = null;
+
 
                     try {
 
@@ -118,7 +133,23 @@
                         $ionicLoading.hide();
 
                         //var file = new Blob([data],{ type: 'application/pdf' });
-                        var fileURL = URL.createObjectURL(blob);
+                        
+                        if ( window.webkitURL ) {
+                            url = window.webkitURL.createObjectURL(blob);
+                        } else if (window.URL && window.URL.createObjectURL) {
+                            url = window.URL.createObjectURL(blob);
+                        }
+
+                        var helpPopup = $ionicPopup.alert({
+                            title: 'Ajuda',
+                            template: url
+                        });
+                        helpPopup.then(function (res) {
+                            console.log(res);
+                        });
+
+
+                        //var fileURL = windows.URL.createObjectURL(blob);
 
                         //$scope.content = $sce.trustAsResourceUrl(fileURL);
 
@@ -126,12 +157,12 @@
                             to: empresa.email,
                             subject: 'Relatório de presença - De: Até:',
                             body: 'Em anexo segue arquivo com a lista de presença',
-                            attachments: fileURL
+                            attachments: url
                         });
                     }
                     catch (ex) {
 
-                        var helpPopup = $ionicPopup.alert({
+                        helpPopup = $ionicPopup.alert({
                             title: 'Ajuda',
                             template: ex
                         });
