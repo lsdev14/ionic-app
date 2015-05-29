@@ -81,15 +81,44 @@
                     }
                 ).success(function (data) {
 
+                    var blob = null;
+                    var type = "";
+
+                    try {
+                        blob = new Blob([data],{ type: "application/pdf" });
+                        type ="case 1";
+                    }
+                    catch (e) {
+                        window.BlobBuilder = window.BlobBuilder ||
+                                                             window.WebKitBlobBuilder ||
+                                                             window.MozBlobBuilder ||
+                                                             window.MSBlobBuilder;
+                        if (e.name == 'TypeError' && window.BlobBuilder) {
+                            var bb = new BlobBuilder();
+                            bb.append(data);
+                            blob = bb.getBlob("application/pdf");
+                            type = "case 2";
+                        }
+                        else if (e.name == "InvalidStateError") {
+                            // InvalidStateError (tested on FF13 WinXP)
+                            blob = new Blob([data],{ type: "application/pdf" });
+                            type ="case 3";
+                        }
+                        else {
+                            // We're screwed, blob constructor unsupported entirely
+                            type ="Errore";
+                        }
+                    }
+
+
                     try {
 
                         //console.log(data);
                         console.log(true);
                         $ionicLoading.hide();
 
-
-                        var file = new Blob([data],{ type: 'application/pdf' });
-                        var fileURL = URL.createObjectURL(file);
+                        //var file = new Blob([data],{ type: 'application/pdf' });
+                        var fileURL = URL.createObjectURL(blob);
 
                         //$scope.content = $sce.trustAsResourceUrl(fileURL);
 
