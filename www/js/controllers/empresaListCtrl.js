@@ -148,12 +148,15 @@
 
                         //$scope.content = $sce.trustAsResourceUrl(fileURL);
 
-                        cordova.plugins.email.open({
-                            to: empresa.email,
-                            subject: 'Relatório de presença - De: Até:',
-                            body: 'Em anexo segue arquivo com a lista de presença',
-                            attachments: url
-                        });
+                        window.open(url);
+
+
+                        //cordova.plugins.email.open({
+                        //    to: empresa.email,
+                        //    subject: 'Relatório de presença - De: Até:',
+                        //    body: 'Em anexo segue arquivo com a lista de presença',
+                        //    attachments: url
+                        //});
                     }
                     catch (ex) {
 
