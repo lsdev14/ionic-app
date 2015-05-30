@@ -10,7 +10,7 @@
         <div class="item item-input item-button-right">
             <span class="input-label">{{empresa.nome}} </span>
             <span style="position: absolute; top: 16px; right: 75px;">{{(data | date:"dd-MM-yyyy")}}</span>
-            <a class="button" style="min-width: 45px;top: 5px;" ng-click="test()">
+            <a class="button" style="min-width: 45px;top: 5px;" ng-click="help()">
                 <i class="icon ion-help"></i>
             </a>            
         </div>
@@ -37,7 +37,7 @@
                         <i class="icon ion-checkmark"></i>
                     </a>
 
-                    <a class="button" data-ng-class="{'button-energized' : funcionario.status == 'Ferias'}" data-ng-click="status(funcionario, 'Ferias')">
+                    <a class="button" data-ng-class="{'button-energized' : funcionario.status == 'Férias'}" data-ng-click="status(funcionario, 'Férias')">
                         <i class="icon ion-checkmark"></i>
                     </a>
 

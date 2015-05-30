@@ -10,5 +10,5 @@ ionic share email
 bower install
 
 #install apk to android device
-adb install ControlePresenca-debug.apk
+adb install ControlePresenca.apk
 

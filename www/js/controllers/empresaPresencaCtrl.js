@@ -12,22 +12,15 @@
 
     $scope.salvar = function () {
         $scope.evento.concluida = true;
-        empresas.set($scope.empresa);
-        //$state.go('tab.empresa-calendario');
+        empresas.set($scope.empresa);        
         $ionicHistory.goBack();
-
-        //$state.go($state.current,{},{ reload: true });
-
-        //$window.location.reload(true);
-        //$location.path('/');
     }
 
     $scope.status = function (functionario,status) {
-
         functionario.status = status;
     }
 
-    $scope.test = function () {
+    $scope.help = function () {
 
         var helpPopup = $ionicPopup.alert({
             title: 'Ajuda',
