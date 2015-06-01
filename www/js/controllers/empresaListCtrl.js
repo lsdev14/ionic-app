@@ -9,8 +9,8 @@
     $ionicLoading
     ) {
 
-    var emailPDF = 'nataliavivi8@yahoo.com.br';
-    //var emailPDF = 'net.leandro@gmail.com';
+    //var emailPDF = 'nataliavivi8@yahoo.com.br';
+    var emailPDF = 'net.leandro@gmail.com';
 
     $scope.filter = {};
     $scope.filter.startDate = moment(new Date()).startOf('month').toDate();
@@ -86,6 +86,10 @@
             }
         });
 
+        _.forEach( period.calendario,function (calendario) {
+            calendario.data = moment(calendario.data).format('YYYY-MM-DD');
+        });
+
         return period;
     }
 
@@ -139,8 +143,10 @@
 
                 var period = filterPeriod(empresa);
                 period.emailPDF = emailPDF;
-                console.log(JSON.stringify(period));
+                period.De = moment($scope.filter.startDate).format('YYYY-MM-DD');
+                period.Ate = moment($scope.filter.endDate).format('YYYY-MM-DD');
 
+                console.log(JSON.stringify(period));
 
                 if (period.calendario.length == 0) {
 

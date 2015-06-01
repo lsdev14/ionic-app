@@ -1,0 +1,219 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'ios-sim' ]
+2 info using npm@2.5.1
+3 info using node@v0.12.0
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 silly cache add args [ 'ios-sim', null ]
+6 verbose cache add spec ios-sim
+7 silly cache add parsed spec { raw: 'ios-sim',
+7 silly cache add   scope: null,
+7 silly cache add   name: 'ios-sim',
+7 silly cache add   rawSpec: '',
+7 silly cache add   spec: '*',
+7 silly cache add   type: 'range' }
+8 verbose addNamed ios-sim@*
+9 silly addNamed semver.valid null
+10 silly addNamed semver.validRange *
+11 silly addNameRange { name: 'ios-sim', range: '*', hasData: false }
+12 silly mapToRegistry name ios-sim
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry uri https://registry.npmjs.org/ios-sim
+16 verbose addNameRange registry:https://registry.npmjs.org/ios-sim not in flight; fetching
+17 verbose request uri https://registry.npmjs.org/ios-sim
+18 verbose request no auth needed
+19 info attempt registry request try #1 at 22:24:44
+20 verbose request id beb3afbf01efe271
+21 http request GET https://registry.npmjs.org/ios-sim
+22 http 200 https://registry.npmjs.org/ios-sim
+23 silly get cb [ 200,
+23 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+23 silly get     etag: '"1H76UOC6W9Z8XWWIXSB6N1P9A"',
+23 silly get     'content-type': 'application/json',
+23 silly get     'cache-control': 'max-age=60',
+23 silly get     'content-length': '15537',
+23 silly get     'accept-ranges': 'bytes',
+23 silly get     date: 'Mon, 01 Jun 2015 01:24:46 GMT',
+23 silly get     via: '1.1 varnish',
+23 silly get     age: '0',
+23 silly get     connection: 'keep-alive',
+23 silly get     'x-served-by': 'cache-iad2141-IAD',
+23 silly get     'x-cache': 'HIT',
+23 silly get     'x-cache-hits': '1',
+23 silly get     'x-timer': 'S1433121886.325425,VS0,VE347',
+23 silly get     vary: 'Accept' } ]
+24 verbose get saving ios-sim to C:\Users\Leandro\AppData\Roaming\npm-cache\registry.npmjs.org\ios-sim\.cache.json
+25 silly addNameRange number 2 { name: 'ios-sim', range: '*', hasData: true }
+26 silly addNameRange versions [ 'ios-sim',
+26 silly addNameRange   [ '1.8.0',
+26 silly addNameRange     '1.8.1',
+26 silly addNameRange     '1.8.2',
+26 silly addNameRange     '1.9.0',
+26 silly addNameRange     '2.0.0',
+26 silly addNameRange     '2.0.1',
+26 silly addNameRange     '3.0.0',
+26 silly addNameRange     '3.1.0',
+26 silly addNameRange     '3.1.1',
+26 silly addNameRange     '4.1.0' ] ]
+27 verbose addNamed ios-sim@3.1.1
+28 silly addNamed semver.valid 3.1.1
+29 silly addNamed semver.validRange 3.1.1
+30 silly mapToRegistry name ios-sim
+31 silly mapToRegistry using default registry
+32 silly mapToRegistry registry https://registry.npmjs.org/
+33 silly mapToRegistry uri https://registry.npmjs.org/ios-sim
+34 verbose addRemoteTarball https://registry.npmjs.org/ios-sim/-/ios-sim-3.1.1.tgz not in flight; adding
+35 verbose addRemoteTarball [ 'https://registry.npmjs.org/ios-sim/-/ios-sim-3.1.1.tgz',
+35 verbose addRemoteTarball   '1129c3fda31b917ef656b8c53fd276392b51c6e8' ]
+36 info retry fetch attempt 1 at 22:24:45
+37 info attempt registry request try #1 at 22:24:45
+38 http fetch GET https://registry.npmjs.org/ios-sim/-/ios-sim-3.1.1.tgz
+39 http fetch 200 https://registry.npmjs.org/ios-sim/-/ios-sim-3.1.1.tgz
+40 silly fetchAndShaCheck shasum 1129c3fda31b917ef656b8c53fd276392b51c6e8
+41 verbose addTmpTarball C:\TEMP\npm-9836-4410ad9c\registry.npmjs.org\ios-sim\-\ios-sim-3.1.1.tgz not in flight; adding
+42 verbose addTmpTarball already have metadata; skipping unpack for ios-sim@3.1.1
+43 silly cache afterAdd ios-sim@3.1.1
+44 verbose afterAdd C:\Users\Leandro\AppData\Roaming\npm-cache\ios-sim\3.1.1\package\package.json not in flight; writing
+45 verbose afterAdd C:\Users\Leandro\AppData\Roaming\npm-cache\ios-sim\3.1.1\package\package.json written
+46 silly install resolved [ { name: 'ios-sim',
+46 silly install resolved     version: '3.1.1',
+46 silly install resolved     description: 'launch iOS apps into the iOS Simulator from the command line (Xcode 6.0)',
+46 silly install resolved     main: 'ios-sim',
+46 silly install resolved     scripts: { preinstall: 'rake build' },
+46 silly install resolved     bin: { 'ios-sim': 'build/Release/ios-sim' },
+46 silly install resolved     repository: { type: 'git', url: 'https://github.com/phonegap/ios-sim' },
+46 silly install resolved     keywords: [ 'ios-sim', 'iOS Simulator' ],
+46 silly install resolved     author: { name: 'Landon Fuller, Jeff Haynie, Eloy Duran, Shazron Abdullah' },
+46 silly install resolved     license: 'MIT',
+46 silly install resolved     gitHead: 'c6ec64397e5fa462f1ea2d4e4fdc123a856618f9',
+46 silly install resolved     bugs: { url: 'https://github.com/phonegap/ios-sim/issues' },
+46 silly install resolved     homepage: 'https://github.com/phonegap/ios-sim',
+46 silly install resolved     _id: 'ios-sim@3.1.1',
+46 silly install resolved     _shasum: '1129c3fda31b917ef656b8c53fd276392b51c6e8',
+46 silly install resolved     _from: 'ios-sim@*',
+46 silly install resolved     _npmVersion: '1.4.14',
+46 silly install resolved     _npmUser: { name: 'shazron', email: 'shazron@gmail.com' },
+46 silly install resolved     maintainers: [ [Object] ],
+46 silly install resolved     dist:
+46 silly install resolved      { shasum: '1129c3fda31b917ef656b8c53fd276392b51c6e8',
+46 silly install resolved        tarball: 'http://registry.npmjs.org/ios-sim/-/ios-sim-3.1.1.tgz' },
+46 silly install resolved     directories: {},
+46 silly install resolved     _resolved: 'https://registry.npmjs.org/ios-sim/-/ios-sim-3.1.1.tgz' } ]
+47 info install ios-sim@3.1.1 into C:\Users\Leandro\AppData\Roaming\npm
+48 info installOne ios-sim@3.1.1
+49 verbose installOne of ios-sim to C:\Users\Leandro\AppData\Roaming\npm not in flight; installing
+50 verbose lock using C:\Users\Leandro\AppData\Roaming\npm-cache\_locks\ios-sim-f9ed32bd252cc196.lock for C:\Users\Leandro\AppData\Roaming\npm\node_modules\ios-sim
+51 silly install write writing ios-sim 3.1.1 to C:\Users\Leandro\AppData\Roaming\npm\node_modules\ios-sim
+52 silly cache addNamed cb ios-sim@3.1.1
+53 verbose unbuild node_modules\ios-sim
+54 verbose gentlyRm vacuuming C:\Users\Leandro\AppData\Roaming\npm\node_modules\ios-sim
+55 verbose tar unpack C:\Users\Leandro\AppData\Roaming\npm-cache\ios-sim\3.1.1\package.tgz
+56 verbose tar unpacking to C:\Users\Leandro\AppData\Roaming\npm\node_modules\ios-sim
+57 verbose gentlyRm vacuuming C:\Users\Leandro\AppData\Roaming\npm\node_modules\ios-sim
+58 silly gunzTarPerm modes [ '777', '666' ]
+59 silly gunzTarPerm extractEntry package.json
+60 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+61 silly gunzTarPerm extractEntry .npmignore
+62 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+63 silly gunzTarPerm extractEntry README.md
+64 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+65 silly gunzTarPerm extractEntry LICENSE
+66 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
+67 silly gunzTarPerm extractEntry resources/buildbox/build.sh
+68 silly gunzTarPerm modified mode [ 'resources/buildbox/build.sh', 493, 511 ]
+69 silly gunzTarPerm extractEntry CoreSimulator/CoreSimulator.h
+70 silly gunzTarPerm modified mode [ 'CoreSimulator/CoreSimulator.h', 420, 438 ]
+71 silly gunzTarPerm extractEntry CONTRIBUTING.md
+72 silly gunzTarPerm modified mode [ 'CONTRIBUTING.md', 420, 438 ]
+73 silly gunzTarPerm extractEntry Rakefile
+74 silly gunzTarPerm modified mode [ 'Rakefile', 420, 438 ]
+75 silly gunzTarPerm extractEntry Source/.npmignore
+76 silly gunzTarPerm modified mode [ 'Source/.npmignore', 420, 438 ]
+77 silly gunzTarPerm extractEntry Source/NSString+expandPath.h
+78 silly gunzTarPerm modified mode [ 'Source/NSString+expandPath.h', 420, 438 ]
+79 silly gunzTarPerm extractEntry Source/NSString+expandPath.m
+80 silly gunzTarPerm modified mode [ 'Source/NSString+expandPath.m', 420, 438 ]
+81 silly gunzTarPerm extractEntry Source/iPhoneSimulator.h
+82 silly gunzTarPerm modified mode [ 'Source/iPhoneSimulator.h', 420, 438 ]
+83 silly gunzTarPerm extractEntry Source/iPhoneSimulator.m
+84 silly gunzTarPerm modified mode [ 'Source/iPhoneSimulator.m', 493, 511 ]
+85 silly gunzTarPerm extractEntry Source/main.m
+86 silly gunzTarPerm modified mode [ 'Source/main.m', 420, 438 ]
+87 silly gunzTarPerm extractEntry Source/nsprintf.h
+88 silly gunzTarPerm modified mode [ 'Source/nsprintf.h', 420, 438 ]
+89 silly gunzTarPerm extractEntry Source/nsprintf.m
+90 silly gunzTarPerm modified mode [ 'Source/nsprintf.m', 420, 438 ]
+91 silly gunzTarPerm extractEntry Source/version.h
+92 silly gunzTarPerm modified mode [ 'Source/version.h', 420, 438 ]
+93 silly gunzTarPerm extractEntry ios-sim.xcodeproj/.npmignore
+94 silly gunzTarPerm modified mode [ 'ios-sim.xcodeproj/.npmignore', 420, 438 ]
+95 silly gunzTarPerm extractEntry ios-sim.xcodeproj/project.pbxproj
+96 silly gunzTarPerm modified mode [ 'ios-sim.xcodeproj/project.pbxproj', 420, 438 ]
+97 silly gunzTarPerm extractEntry ios-sim.xcodeproj/xcshareddata/xcschemes/ios-sim.xcscheme
+98 silly gunzTarPerm modified mode [ 'ios-sim.xcodeproj/xcshareddata/xcschemes/ios-sim.xcscheme',
+98 silly gunzTarPerm   420,
+98 silly gunzTarPerm   438 ]
+99 silly gunzTarPerm extractEntry ios-sim_Prefix.pch
+100 silly gunzTarPerm modified mode [ 'ios-sim_Prefix.pch', 420, 438 ]
+101 silly gunzTarPerm extractEntry DVTiPhoneSimulatorRemoteClient/DVTiPhoneSimulatorRemoteClient.h
+102 silly gunzTarPerm modified mode [ 'DVTiPhoneSimulatorRemoteClient/DVTiPhoneSimulatorRemoteClient.h',
+102 silly gunzTarPerm   420,
+102 silly gunzTarPerm   438 ]
+103 silly gunzTarPerm extractEntry README.template.md
+104 silly gunzTarPerm modified mode [ 'README.template.md', 420, 438 ]
+105 info preinstall ios-sim@3.1.1
+106 verbose unsafe-perm in lifecycle true
+107 info ios-sim@3.1.1 Failed to exec preinstall script
+108 verbose unlock done using C:\Users\Leandro\AppData\Roaming\npm-cache\_locks\ios-sim-f9ed32bd252cc196.lock for C:\Users\Leandro\AppData\Roaming\npm\node_modules\ios-sim
+109 verbose stack Error: ios-sim@3.1.1 preinstall: `rake build`
+109 verbose stack Exit status 1
+109 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:213:16)
+109 verbose stack     at EventEmitter.emit (events.js:110:17)
+109 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:14:12)
+109 verbose stack     at ChildProcess.emit (events.js:110:17)
+109 verbose stack     at maybeClose (child_process.js:1008:16)
+109 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1080:5)
+110 verbose pkgid ios-sim@3.1.1
+111 verbose cwd C:\Users\Leandro\Source\Workspaces\Controle de Presença\Code\FrontEnd
+112 error Windows_NT 6.3.9600
+113 error argv "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "ios-sim"
+114 error node v0.12.0
+115 error npm  v2.5.1
+116 error code ELIFECYCLE
+117 error ios-sim@3.1.1 preinstall: `rake build`
+117 error Exit status 1
+118 error Failed at the ios-sim@3.1.1 preinstall script 'rake build'.
+118 error This is most likely a problem with the ios-sim package,
+118 error not with npm itself.
+118 error Tell the author that this fails on your system:
+118 error     rake build
+118 error You can get their info via:
+118 error     npm owner ls ios-sim
+118 error There is likely additional logging output above.
+119 verbose exit [ 1, true ]
+120 verbose unbuild node_modules\ios-sim
+121 info preuninstall ios-sim@3.1.1
+122 info uninstall ios-sim@3.1.1
+123 verbose unbuild rmStuff ios-sim@3.1.1 from C:\Users\Leandro\AppData\Roaming\npm\node_modules
+124 verbose gentlyRm verifying that C:\Users\Leandro\AppData\Roaming\npm is managed by npm
+125 silly isManaged C:\Users\Leandro\AppData\Roaming\npm is not inside C:\Users\Leandro\AppData\Roaming\npm\node_modules
+126 silly isManaged C:\Users\Leandro\AppData\Roaming\npm is not inside C:\Users\Leandro\AppData\Roaming\npm\node_modules
+127 silly isManaged C:\Users\Leandro\AppData\Roaming\npm is inside C:\Users\Leandro\AppData\Roaming\npm
+128 silly gentlyRm C:\Users\Leandro\AppData\Roaming\npm is managed by npm
+129 silly gentlyRm C:\Users\Leandro\AppData\Roaming\npm\ios-sim.cmd is under C:\Users\Leandro\AppData\Roaming\npm
+130 verbose gentlyRm vacuuming C:\Users\Leandro\AppData\Roaming\npm\ios-sim.cmd up to C:\Users\Leandro\AppData\Roaming\npm
+131 verbose gentlyRm verifying that C:\Users\Leandro\AppData\Roaming\npm is managed by npm
+132 silly isManaged C:\Users\Leandro\AppData\Roaming\npm is not inside C:\Users\Leandro\AppData\Roaming\npm\node_modules
+133 silly isManaged C:\Users\Leandro\AppData\Roaming\npm is not inside C:\Users\Leandro\AppData\Roaming\npm\node_modules
+134 silly isManaged C:\Users\Leandro\AppData\Roaming\npm is inside C:\Users\Leandro\AppData\Roaming\npm
+135 silly gentlyRm C:\Users\Leandro\AppData\Roaming\npm is managed by npm
+136 silly gentlyRm C:\Users\Leandro\AppData\Roaming\npm\ios-sim is under C:\Users\Leandro\AppData\Roaming\npm
+137 verbose gentlyRm vacuuming C:\Users\Leandro\AppData\Roaming\npm\ios-sim up to C:\Users\Leandro\AppData\Roaming\npm
+138 info postuninstall ios-sim@3.1.1
+139 verbose gentlyRm vacuuming C:\Users\Leandro\AppData\Roaming\npm\node_modules\ios-sim
+140 silly gentlyRm purging C:\Users\Leandro\AppData\Roaming\npm\node_modules\ios-sim
+141 silly gentlyRm quitting because other entries in C:\Users\Leandro\AppData\Roaming\npm\node_modules

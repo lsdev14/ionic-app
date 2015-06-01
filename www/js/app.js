@@ -50,62 +50,53 @@ angular.module('controlePresenca',[
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
-  $stateProvider
+    $stateProvider
 
-  // setup an abstract state for the tabs directive
-.state('tab', {
-    url: "/tab",
-    abstract: true,
-    templateUrl: "templates/tabs.html"
- })
+    // setup an abstract state for the tabs directive
+  .state('tab',{
+      url: "/tab",
+      abstract: true,
+      templateUrl: "templates/tabs.html"
+  })
 
-  // Each tab has its own nav history stack:
+    // Each tab has its own nav history stack:
 
-.state('tab.empresas', {
-    url: '/empresas',
-    views: {
-      'tab-empresa-list': {
-        templateUrl: 'templates/tab-empresa-list.html',
-        controller: 'EmpresaListCtrl'
+  .state('tab.empresas',{
+      url: '/empresas',
+      views: {
+          'tab-empresa-list': {
+              templateUrl: 'templates/tab-empresa-list.html',
+              controller: 'EmpresaListCtrl'
+          }
       }
-    }
-})
-.state('tab.empresa-detail', {
+  })
+  .state('tab.empresa-detail',{
       url: '/detail/:empresaCodigo',
       views: {
-        'tab-empresa-list': {
-          templateUrl: 'templates/empresa-detail.html',
-          controller: 'EmpresaDetailCtrl'
-        }
+          'tab-empresa-list': {
+              templateUrl: 'templates/empresa-detail.html',
+              controller: 'EmpresaDetailCtrl'
+          }
       }
-})
-.state('tab.empresa-calendario', {
+  })
+  .state('tab.empresa-calendario',{
       url: '/calendario/:empresaCodigo',
       views: {
-        'tab-empresa-list': {
-          templateUrl: 'templates/empresa-calendario.html',
-          controller: 'EmpresaCalendarioCtrl'
-        }
+          'tab-empresa-list': {
+              templateUrl: 'templates/empresa-calendario.html',
+              controller: 'EmpresaCalendarioCtrl'
+          }
       }
-})
-.state('tab.empresa-presenca', {
+  })
+  .state('tab.empresa-presenca',{
       url: '/presenca/:empresaCodigo/:data',
       views: {
-        'tab-empresa-list': {
-          templateUrl: 'templates/empresa-presenca.html',
-          controller: 'EmpresaPresencaCtrl'
-        }
+          'tab-empresa-list': {
+              templateUrl: 'templates/empresa-presenca.html',
+              controller: 'EmpresaPresencaCtrl'
+          }
       }
-})
-.state('tab.relatorio', {
-    url: '/relatorio',
-    views: {
-      'tab-relatorio': {
-        templateUrl: 'templates/tab-relatorio.html',
-        controller: 'RelatorioCtrl'
-      }
-    }
-});
+  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/empresas');

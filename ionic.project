@@ -1,4 +1,11 @@
 {
   "name": "ControlePresenca",
-  "app_id": "8b76bc2d"
+  "app_id": "8b76bc2d",
+  "browsers": [
+    {
+      "platform": "android",
+      "browser": "crosswalk",
+      "version": "12.41.296.5"
+    }
+  ]
 }
