@@ -1,16 +1,14 @@
 ﻿angular.module('controlePresenca.controllers')
 
-.controller('EmpresaListCtrl',['$scope','$ionicPopup','$http','Empresas','$firebaseStorage','$ionicLoading', function (
+.controller('EmpresaListCtrl',['$scope','$ionicPopup','$http','Empresas','$firebaseStorage','$ionicLoading','Settings', function (
     $scope,
     $ionicPopup,
     $http,
     empresas,    
     $firebaseStorage,
-    $ionicLoading
+    $ionicLoading,
+    settings
     ) {
-
-    //var emailPDF = 'nataliavivi8@yahoo.com.br';
-    var emailPDF = 'net.leandro@gmail.com';
 
     $scope.filter = {};
     $scope.filter.startDate = moment(new Date()).startOf('month').toDate();
@@ -137,12 +135,27 @@
                 console.log($scope.filter.startDate);
                 console.log($scope.filter.endDate);
 
+                settingsData = settings.all();
+                if (settingsData.length == 0 || !settingsData[0].reportEmail) {
+
+                    var helpPopup = $ionicPopup.alert({
+                        title: 'Aviso',
+                        template: 'Configure o email para envio do relatório'
+                    });
+                    helpPopup.then(function (res) {
+                        console.log(res);
+                    });
+
+                    return false;
+                }
+                
+
                 $ionicLoading.show({
                     template: 'Gerando relatório...'
                 });
 
                 var period = filterPeriod(empresa);
-                period.emailPDF = emailPDF;
+                period.emailPDF = settingsData[0].reportEmail;
                 period.De = moment($scope.filter.startDate).format('YYYY-MM-DD');
                 period.Ate = moment($scope.filter.endDate).format('YYYY-MM-DD');
 
@@ -175,7 +188,7 @@
                     $ionicLoading.hide();
                     var helpPopup = $ionicPopup.alert({
                         title: 'Aviso',
-                        template: data ? 'Email enviado com sucesso para ' + emailPDF : 'Não foi possível enviar o email para ' + emailPDF
+                        template: data ? 'Email enviado com sucesso para ' + settingsData[0].reportEmail : 'Não foi possível enviar o email para ' + settingsData[0].reportEmail
                     });
                     helpPopup.then(function (res) {
                         console.log(res);
