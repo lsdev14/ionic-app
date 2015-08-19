@@ -91,6 +91,33 @@
         return period;
     }
 
+    $scope.removeEmpresa = function (empresa) {
+
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Aviso',
+            template: 'Deseja remover empresa ' + empresa.nome + '?'
+        });
+        confirmPopup.then(function (res) {
+            if (res) {
+
+                confirmPopup = $ionicPopup.confirm({
+                    title: 'Aviso',
+                    template: 'Todos os funcionarios e presenças da empresa ' + empresa.nome + ' serão removidos, confirma?'
+                });
+                confirmPopup.then(function (res2) {
+                    if (res2) {
+                        console.log('Removendo empresa ' + empresa.nome);
+                        empresas.remove(empresa);
+                        $scope.empresas = empresas.all();
+                    }
+                });
+            } else {
+                console.log('Remover cancelado');
+            }
+        });
+    }
+
+
     $scope.relatModal = function (empresa) {
 
         var filterDatePopup = $ionicPopup.show({
