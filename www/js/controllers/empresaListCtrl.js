@@ -204,7 +204,7 @@
 
 
                 $http.post(
-                    'http://apirelatorio.ssvsistemas.com.br/api/relatoriopresenca/post',
+                    'http://apirelatorio.cbconsultoria.net/api/relatoriopresenca/post',
                     JSON.stringify(period),
                     {
                         headers: {
