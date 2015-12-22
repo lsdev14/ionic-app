@@ -1,13 +1,13 @@
-﻿angular.module('controlePresenca.controllers')
+angular.module('controlePresenca.controllers')
 
 .controller('SobreCtrl',['$scope','$ionicPopup','$ionicSideMenuDelegate','Settings','Util',
     function ($scope,$ionicPopup,$ionicSideMenuDelegate,settings,util) {
 
     console.log('about screen');
     
-    $scope.build = '0.1';
-    $scope.dateRelease = '20/06/2015';
-    $scope.emailContact = 'contato@ssvsistemas.com.br';
+    $scope.build = '0.3';
+    $scope.dateRelease = '22/12/2015';
+    $scope.emailContact = 'net.leandro@gmail.com';
     $scope.website = 'http://ssvsistemas.com.br';
 
     $scope.showSettings = function () {
@@ -78,8 +78,8 @@
             scope: $scope,
             template: '<b>Versão:</b> {{build}} <br/>' +
                       '<b>Data:</b> {{dateRelease}} <br/>' +
-                      '<b>Email:</b> <a href="mailto:{{emailContact}}?Subject=Controle de Presença" target="_blank">{{emailContact}}</a><br/>' +
-                      '<b>Site:</b> <a href="{{website}}" target="_blank"> {{website}}</a> <br/>'
+                      '<b>Email:</b> <a href="mailto:{{emailContact}}?Subject=Controle de Presença" target="_blank">{{emailContact}}</a><br/>'// +
+                      //'<b>Site:</b> <a href="{{website}}" target="_blank"> {{website}}</a> <br/>'
                         
         });
         aboutPopup.then(function (res) {
