@@ -162,7 +162,7 @@
                 console.log($scope.filter.startDate);
                 console.log($scope.filter.endDate);
 
-                settingsData = settings.all();
+                var settingsData = settings.all();
                 if (settingsData.length == 0 || !settingsData[0].reportEmail) {
 
                     var helpPopup = $ionicPopup.alert({
@@ -224,7 +224,7 @@
                     $ionicLoading.hide();
                     var helpPopup = $ionicPopup.alert({
                         title: 'Aviso',
-                        template: "Não foi possível gerar o relatório<br/>Verifique a conexão com a internet <br/>Erro: " + data
+                        template: "Não foi possível gerar o relatório<br/>Verifique a conexão com a internet <br/>Erro: " + status + " - " + data
                     });
                     helpPopup.then(function (res) {
                         console.log(res);

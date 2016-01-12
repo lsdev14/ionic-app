@@ -1,12 +1,12 @@
-angular.module('controlePresenca.controllers')
+﻿angular.module('controlePresenca.controllers')
 
 .controller('SobreCtrl',['$scope','$ionicPopup','$ionicSideMenuDelegate','Settings','Util',
     function ($scope,$ionicPopup,$ionicSideMenuDelegate,settings,util) {
 
     console.log('about screen');
     
-    $scope.build = '0.3';
-    $scope.dateRelease = '22/12/2015';
+    $scope.build = '0.4';
+    $scope.dateRelease = '12/01/2016';
     $scope.emailContact = 'net.leandro@gmail.com';
     $scope.website = 'http://ssvsistemas.com.br';
 
