@@ -23,6 +23,7 @@
   <gap:plugin name="cordova-plugin-whitelist" spec="1.1.0" source="npm" />
   <gap:plugin name="ionic-plugin-keyboard" spec="2.2.1" source="npm" />
   <gap:plugin name="cordova-plugin-console" spec="1.0.5" source="npm" />
+  <gap:plugin name="cordova-plugin-device" spec="1.1.4" source="npm" />  
   
   <platform name="android">
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
