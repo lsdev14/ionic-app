@@ -20,8 +20,8 @@
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
   
-  <gap:plugin name="com.indigoway.cordova.whitelist.whitelistplugin" spec="1.1.1" source="npm" />
-  <gap:plugin name="com.ionic.keyboard" spec="1.0.3" source="npm" />
+  <gap:plugin name="cordova-plugin-whitelist" spec="1.1.1" source="npm" />
+  <gap:plugin name="ionic-plugin-keyboard" spec="2.2.1" source="npm" />
   <gap:plugin name="it.adacto.cordova.device" spec="0.1" source="npm" />
   
   <platform name="android">
