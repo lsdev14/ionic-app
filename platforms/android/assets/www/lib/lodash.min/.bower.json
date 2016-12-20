@@ -1,0 +1,14 @@
+{
+  "name": "lodash.min",
+  "_cacheHeaders": {
+    "ETag": "\"46b088303b1d12829cf55f86ce214191191ffe7c\"",
+    "Content-Length": "50772",
+    "Content-Type": "text/plain; charset=utf-8"
+  },
+  "_release": "e-tag:46b088303",
+  "main": "lodash.min.js",
+  "_source": "https://raw.githubusercontent.com/lodash/lodash/3.7.0/lodash.min.js",
+  "_target": "*",
+  "_originalSource": "https://raw.githubusercontent.com/lodash/lodash/3.7.0/lodash.min.js",
+  "_direct": true
+}

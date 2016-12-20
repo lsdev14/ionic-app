@@ -1,0 +1,58 @@
+<ion-view view-title="Lista de Empresas">
+
+    <ion-nav-buttons side="right">
+
+
+        <!--<a class="button button-positive" style="right:10px !important;" data-ng-click="clearEmpresa()">
+            <i class="icon ion-alert-circled"></i>
+        </a>-->
+
+        <a class="button button-positive" style="right:10px !important;" data-ng-click="backupData()">
+            <i class="icon ion-upload"></i>
+        </a>
+
+
+        <a class="button button-positive" href="#/tab/detail/new">
+            <i class="icon ion-plus"></i>
+        </a>
+
+
+
+
+    </ion-nav-buttons>
+
+    <ion-content>
+
+
+        <ion-list>
+            <ion-item data-ng-repeat="empresa in empresas | orderBy:'nome' track by empresa.codigo" class="item-button-right" >                
+              
+                <a class="item-content" href="#/tab/calendario/{{empresa.codigo}}">
+                    {{empresa.nome}}
+                </a>
+
+                <!--<a class="button button-positive" style="right:130px !important;" href="#/tab/calendario/{{empresa.codigo}}">
+                    <i class="icon ion-calendar"></i>
+                </a>-->
+
+                <a class="button button-positive" style="right:128px !important;" ng-click="removeEmpresa(empresa)">
+                    <i class="icon ion-trash-a"></i>
+                </a>
+
+                <a class="button button-positive" style="right:70px !important;" ng-click="relatModal(empresa)">
+                    <i class="icon ion-printer"></i>
+                </a>
+
+                <a class="button button-positive" href="#/tab/detail/{{empresa.codigo}}">
+                    <i class="icon ion-compose"></i>
+                </a>
+
+            </ion-item>
+            <!--<div ng-hide="empresas.length">No items found</div>-->
+        </ion-list>
+
+    </ion-content>
+
+
+
+</ion-view>
