@@ -5,8 +5,8 @@
 
     console.log('about screen');
     
-    $scope.build = '0.4';
-    $scope.dateRelease = '12/01/2016';
+    $scope.build = '0.5';
+    $scope.dateRelease = '19/12/2016';
     $scope.emailContact = 'net.leandro@gmail.com';
     $scope.website = 'http://ssvsistemas.com.br';
 

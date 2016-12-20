@@ -204,7 +204,7 @@
 
 
                 $http.post(
-                    'http://apirelatorio.cbconsultoria.net/api/relatoriopresenca/post',
+                    'http://controlepresenca.herokuapp.com/relatorio',
                     JSON.stringify(period),
                     {
                         headers: {
