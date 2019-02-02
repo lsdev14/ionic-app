@@ -31,7 +31,7 @@
 
         <div class="item item-input-inset">
             <label class="item item-input">
-                <input type="text" placeholder="Nome Funcionário" data-ng-model="funcionario.nome" data-ng-text-change="addFuncionario()">
+                <input type="text" id="funcionarioNome" placeholder="Nome Funcionário" data-ng-model="funcionario.nome" data-ng-text-change="addFuncionario()">
             </label>
             <button class="button button-positive ion-plus" data-ng-click="addFuncionario()" data-ng-disabled="funcionario.nome == ''"></button>
 

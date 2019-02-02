@@ -1,6 +1,6 @@
 ﻿angular.module('controlePresenca.controllers')
 
-.controller('EmpresaDetailCtrl',['$scope','$ionicPopup','$stateParams','$state','$ionicHistory','Empresas','Util',function ($scope,$ionicPopup,$stateParams,$state,$ionicHistory,empresas,util) {
+.controller('EmpresaDetailCtrl',['$scope','$ionicPopup','$stateParams','$state','$window','$timeout','$ionicHistory','Empresas','Util',function ($scope,$ionicPopup,$stateParams,$state,$window,$timeout,$ionicHistory,empresas,util) {
 
     $scope.form = {};
     $scope.edit = true;
@@ -43,6 +43,13 @@
 
         $scope.empresa.funcionarios.push(funcionario);
         $scope.funcionario.nome = "";
+        
+        $timeout(function() {
+            var element = $window.document.getElementById('funcionarioNome');
+            if (element)
+                element.focus();
+        }, 100)
+        
     }
 
     $scope.removeFuncionario = function (funcionario){

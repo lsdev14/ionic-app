@@ -91,6 +91,18 @@
         return period;
     }
 
+    function showAlert(message){
+        console.log(message);
+        $ionicLoading.hide();
+        var helpPopup = $ionicPopup.alert({
+            title: 'Aviso',
+            template: message
+        });
+        helpPopup.then(function (res) {
+            console.log(res);                        
+        });
+    }
+
     $scope.removeEmpresa = function (empresa) {
 
         var confirmPopup = $ionicPopup.confirm({
@@ -116,7 +128,6 @@
             }
         });
     }
-
 
     $scope.relatModal = function (empresa) {
 
@@ -162,46 +173,20 @@
                 console.log($scope.filter.startDate);
                 console.log($scope.filter.endDate);
 
-                var settingsData = settings.all();
-                if (settingsData.length == 0 || !settingsData[0].reportEmail) {
-
-                    var helpPopup = $ionicPopup.alert({
-                        title: 'Aviso',
-                        template: 'Configure o email para envio do relatório'
-                    });
-                    helpPopup.then(function (res) {
-                        console.log(res);
-                    });
-
-                    return false;
-                }
-                
-
                 $ionicLoading.show({
                     template: 'Gerando relatório...'
                 });
 
-                var period = filterPeriod(empresa);
-                period.emailPDF = settingsData[0].reportEmail;
+                var period = filterPeriod(empresa);                
                 period.De = moment($scope.filter.startDate).format('YYYY-MM-DD');
                 period.Ate = moment($scope.filter.endDate).format('YYYY-MM-DD');
 
                 console.log(JSON.stringify(period));
 
                 if (period.calendario.length == 0) {
-
-                    $ionicLoading.hide();
-                    var helpPopup = $ionicPopup.alert({
-                        title: 'Aviso',
-                        template: 'Não existe presença no período informado'                                  
-                    });
-                    helpPopup.then(function (res) {
-                        console.log(res);                        
-                    });
-
+                    showAlert('Não existe presença no período informado');
                     return false;
                 }
-
 
                 $http.post(
                     'http://controlepresenca.herokuapp.com/relatorio',
@@ -209,149 +194,49 @@
                     {
                         headers: {
                             'Content-Type': 'application/json'
-                        }
+                        },
+                        responseType: 'blob'
                     }
                 ).success(function (data) {
-                    $ionicLoading.hide();
-                    var helpPopup = $ionicPopup.alert({
-                        title: 'Aviso',
-                        template: data ? 'Email enviado com sucesso para ' + settingsData[0].reportEmail : 'Não foi possível enviar o email para ' + settingsData[0].reportEmail
-                    });
-                    helpPopup.then(function (res) {
-                        console.log(res);
-                    });
+                    //console.log(data);
+
+                    try {
+                        var blob = new Blob([data], {
+                            type: 'application/pdf'
+                        });
+                        var folderpath = window.cordova.file.externalRootDirectory;
+                        var fileName = empresa.nome.replace(/\s/g, '').toLowerCase() + '-' + moment($scope.filter.startDate).format('MMMM-YYYY').toLowerCase() + '.pdf';
+                        var finalPath = folderpath + fileName;
+
+                        window.resolveLocalFileSystemURL(folderpath, function (dir) {
+                            dir.getFile(fileName, {
+                                create: true
+                            }, function (file) {
+                                file.createWriter(function (fileWriter) {
+                                    fileWriter.write(blob);
+                                    window.cordova.plugins.fileOpener2.open(finalPath,'application/pdf', {
+                                        error: function (e) {                                                
+                                            showAlert('Não foi possível gerar o relatório<br/>.' + 'Error status: ' + e.status + ' - Error message: ' + e.message);
+                                        },
+                                        success: function () {
+                                            console.log('file opened successfully');
+                                            $ionicLoading.hide();
+                                        }
+                                    });
+                                }, function () {
+                                    showAlert('Não foi possível gerar o relatório<br/>. Permissão negada para salvar o arquivo ' + finalPath);
+                                });
+                            });
+                        });
+
+                    } catch (error) {
+                        showAlert('Não foi possível gerar o relatório<br/>. Error status: ' + e.status + ' - Error message: ' + e.message);
+                    }
                 }).error(function (data,status,headers,config) {
-                    $ionicLoading.hide();
-                    var helpPopup = $ionicPopup.alert({
-                        title: 'Aviso',
-                        template: "Não foi possível gerar o relatório<br/>Verifique a conexão com a internet <br/>Erro: " + status + " - " + data
-                    });
-                    helpPopup.then(function (res) {
-                        console.log(res);
-                    });
+                    showAlert('Não foi possível gerar o relatório<br/>Verifique a conexão com a internet <br/>Erro: ' + status + ' - ' + data);
                 });
             }
         });       
-    };
-
-    //#region Envio de pdf através do email do celular - não finalizada
-    //$scope.relatModal = function (empresa) {
-    //    var confirmPopup = $ionicPopup.confirm({
-    //        title: 'Relatório de presença',
-    //        template: 'De: <label class="item item-input"><input type="date" placeholder="Data"></label> Até: <label class="item item-input"><input type="date" placeholder="Data"></label>'
-    //    });
-    //    confirmPopup.then(function (res) {
-    //        if (res) {
-                
-    //            $ionicLoading.show({
-    //                template: 'Gerando relatório...'
-    //            });
-
-    //            console.log(JSON.stringify(empresa));
-    //            $http.post(
-    //                'http://apirelatorio.ssvsistemas.com.br/api/relatoriopresenca/post',
-    //                JSON.stringify(empresa),
-    //                {
-    //                    headers: {
-    //                        'Content-Type': 'application/json'
-    //                    },
-    //                    responseType:'arraybuffer'
-    //                }
-    //            ).success(function (data) {
-
-    //                var blob = null;
-    //                var type = "";
-
-    //                //data = "base64:relatorio.pdf//" + data;
-
-    //                try {
-    //                    blob = new Blob([data],{ type: "application/pdf" });
-    //                    type ="case 1";
-    //                }
-    //                catch (e) {
-    //                    window.BlobBuilder = window.BlobBuilder ||
-    //                                                         window.WebKitBlobBuilder ||
-    //                                                         window.MozBlobBuilder ||
-    //                                                         window.MSBlobBuilder;
-    //                    if (e.name == 'TypeError' && window.BlobBuilder) {
-    //                        var bb = new BlobBuilder();
-    //                        bb.append(data);
-    //                        blob = bb.getBlob("application/pdf");
-    //                        type = "case 2";
-    //                    }
-    //                    else if (e.name == "InvalidStateError") {
-    //                        // InvalidStateError (tested on FF13 WinXP)
-    //                        blob = new Blob([data],{ type: "application/pdf" });
-    //                        type ="case 3";
-    //                    }
-    //                    else {
-    //                        // We're screwed, blob constructor unsupported entirely
-    //                        type ="Errore";
-    //                    }
-    //                }
-
-    //                var helpPopup = $ionicPopup.alert({
-    //                        title: 'Ajuda',
-    //                        template: type
-    //                    });
-    //                helpPopup.then(function (res) {
-    //                    console.log(res);
-    //                });
-
-    //                var url = null;
-
-
-    //                try {
-
-    //                    //console.log(data);
-    //                    console.log(true);
-    //                    $ionicLoading.hide();
-
-    //                    //var file = new Blob([data],{ type: 'application/pdf' });
-                        
-    //                    if ( window.webkitURL ) {
-    //                        url = window.webkitURL.createObjectURL(blob);
-    //                    } else if (window.URL && window.URL.createObjectURL) {
-    //                        url = window.URL.createObjectURL(blob);
-    //                    }
-
-    //                    //url = url.replace('blob:','');
-
-    //                    var helpPopup = $ionicPopup.alert({
-    //                        title: 'Ajuda',
-    //                        template: url
-    //                    });
-    //                    helpPopup.then(function (res) {
-    //                        console.log(res);
-    //                    });
-
-
-    //                    //var fileURL = windows.URL.createObjectURL(blob);
-    //                    //$scope.content = $sce.trustAsResourceUrl(fileURL);
-    //                    window.open(url);
-
-    //                    cordova.plugins.email.open({
-    //                        to: empresa.email,
-    //                        subject: 'Relatório de presença - De: Até:',
-    //                        body: 'Em anexo segue arquivo com a lista de presença',
-    //                        attachments: url
-    //                    });
-    //                }
-    //                catch (ex) {
-
-    //                    helpPopup = $ionicPopup.alert({
-    //                        title: 'Ajuda',
-    //                        template: ex
-    //                    });
-    //                    helpPopup.then(function (res) {
-    //                        console.log(res);
-    //                    });
-
-    //                }
-    //            });
-    //        }
-    //    });
-    //};
-    //#endregion
+    };  
 
 }])
