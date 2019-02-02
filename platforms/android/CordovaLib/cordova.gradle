@@ -29,7 +29,11 @@ String doEnsureValueExists(filePath, props, key) {
 
 String doGetProjectTarget() {
     def props = new Properties()
-    file('project.properties').withReader { reader ->
+    def propertiesFile = 'project.properties';
+    if(!(file(propertiesFile).exists())) {
+      propertiesFile = '../project.properties';
+    }
+    file(propertiesFile).withReader { reader ->
         props.load(reader)
     }
     return doEnsureValueExists('project.properties', props, 'target')
@@ -61,7 +65,7 @@ String doFindLatestInstalledBuildTools(String minBuildToolsVersion) {
         highestBuildToolsVersion
     } else {
         throw new RuntimeException(
-            "No installed build tools found. Please install the Android build tools version " +
+            "No installed build tools found. Install the Android build tools version " +
             minBuildToolsVersion + " or higher.")
     }
 }
@@ -125,7 +129,15 @@ def doExtractIntFromManifest(name) {
     def pattern = Pattern.compile(name + "=\"(\\d+)\"")
     def matcher = pattern.matcher(manifestFile.getText())
     matcher.find()
-    return Integer.parseInt(matcher.group(1))
+    return new BigInteger(matcher.group(1))
+}
+
+def doExtractStringFromManifest(name) {
+    def manifestFile = file(android.sourceSets.main.manifest.srcFile)
+    def pattern = Pattern.compile(name + "=\"(\\S+)\"")
+    def matcher = pattern.matcher(manifestFile.getText())
+    matcher.find()
+    return matcher.group(1)
 }
 
 def doPromptForPassword(msg) {
@@ -153,7 +165,7 @@ def doPromptForPassword(msg) {
 }
 
 def doGetConfigXml() {
-    def xml = file("res/xml/config.xml").getText()
+    def xml = file("src/main/res/xml/config.xml").getText()
     // Disable namespace awareness since Cordova doesn't use them properly
     return new XmlParser(false, false).parseText(xml)
 }
@@ -179,6 +191,7 @@ ext {
     privateHelpers.getProjectTarget = { doGetProjectTarget() }
     privateHelpers.findLatestInstalledBuildTools = { doFindLatestInstalledBuildTools('19.1.0') }
     privateHelpers.extractIntFromManifest = { name -> doExtractIntFromManifest(name) }
+    privateHelpers.extractStringFromManifest = { name -> doExtractStringFromManifest(name) }
     privateHelpers.promptForPassword = { msg -> doPromptForPassword(msg) }
     privateHelpers.ensureValueExists = { filePath, props, key -> doEnsureValueExists(filePath, props, key) }
 

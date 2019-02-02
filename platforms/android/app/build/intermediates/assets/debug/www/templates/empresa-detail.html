@@ -1,0 +1,53 @@
+﻿<ion-view view-title="Cadastro de Empresa">
+
+   
+    <ion-nav-buttons side="right">        
+        <button class="button button-positive" data-ng-click="salvar()" data-ng-disabled="form.empresa.$invalid">Salvar</button>
+    </ion-nav-buttons>
+
+    <ion-content class="padding">
+
+        <form name="form.empresa" class="list" novalidate>
+
+            <label class="item item-input">
+                <span class="input-label">Nome</span>
+                <input type="text" placeholder="Nome" data-ng-model="empresa.nome" required>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Telefone</span>
+                <input type="tel" placeholder="Telefone" maxlength="15" data-ng-model="empresa.telefone">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Email</span>
+                <input type="email" placeholder="Email" data-ng-model="empresa.email">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Endereço</span>
+                <input type="text" placeholder="Endereço" data-ng-model="empresa.endereco">
+            </label>
+
+        </form>
+
+
+        <div class="item item-input-inset">
+            <label class="item item-input">
+                <input type="text" id="funcionarioNome" placeholder="Nome Funcionário" data-ng-model="funcionario.nome" data-ng-text-change="addFuncionario()">
+            </label>
+            <button class="button button-positive ion-plus" data-ng-click="addFuncionario()" data-ng-disabled="funcionario.nome == ''"></button>
+
+
+        </div>
+
+        <ion-list>
+            <ion-item data-ng-repeat="funcionario in empresa.funcionarios | orderBy:'nome' track by funcionario.codigo" class="item-button-right">
+                <a href="#" editable-text="funcionario.nome">{{ funcionario.nome }}</a>
+
+                <a class="button button-positive" ng-click="removeFuncionario(funcionario)">
+                    <i class="icon ion-trash-a"></i>
+                </a>
+
+            </ion-item>
+        </ion-list>
+
+    </ion-content>
+</ion-view>

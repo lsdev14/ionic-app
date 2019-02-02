@@ -1,0 +1,4 @@
+#Sat Feb 02 18:34:42 BRST 2019
+base.0=C\:\\Users\\leand\\ssvsistemas\\ionic-app\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
